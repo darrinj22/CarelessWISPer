@@ -1,0 +1,12 @@
+DELIMITER // 
+CREATE PROCEDURE insert_data(parameter_tag_epc VARCHAR(36), parameter_timeout INTEGER)
+ MODIFIES SQL DATA
+ BEGIN
+ INSERT INTO epc_vals (tag_epc,entry_date,tag_state) VALUES (parameter_tag_epc,NOW(),'Recent Batch');
+ DELETE FROM epc_vals WHERE entry_date < NOW() - INTERVAL parameter_timeout MINUTE;
+ UPDATE epc_vals SET tag_state = 'Old Batch' WHERE entry_date < NOW() - INTERVAL 70 SECOND;
+ UPDATE epc_vals SET product_name = 'CHEEZIT' WHERE LEFT(tag_epc,11) = '22600295125';
+ UPDATE epc_vals SET product_name = 'MT DEW' WHERE LEFT(tag_epc,11) = '16026516616';
+ CREATE OR REPLACE TABLE product_info SELECT product_name, tag_epc,entry_date, COUNT(*) times_item_was_seen FROM epc_vals GROUP BY tag_epc ORDER BY entry_date DESC;
+ END;//
+ DELIMITER ; 
