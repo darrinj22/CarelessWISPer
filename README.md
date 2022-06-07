@@ -1,5 +1,5 @@
 # CarelessWISPer 
-Wireless Electronic Shopping Label
+Wireless Electronic Shopping Label | 
 NCSU Senior Capstone Project 2021
 
 ## Introduction
