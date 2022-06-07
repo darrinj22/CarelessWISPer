@@ -1,8 +1,6 @@
 # CarelessWISPer 
 Wireless Electronic Shopping Label
-## NCSU Senior Capstone Project 2021
-
-
+NCSU Senior Capstone Project 2021
 
 ## Introduction
 CarelessWISPer, named after the famous (infamous?) George Michael song, is an Electronic Shopping Label System. Engineered
